@@ -14,9 +14,9 @@ echo 1;*/
 
 // Datos de la base de datos
   $servidor = "localhost";
-  $usuario = "foranerp_user";
-  $pass = "m?L$GPQ5!r[Y"
-  $basededatos = "foranerp_MAE"
+  $usuario = "foranerp_usuario";
+  $pass = "SDV}7MEO,^8~"
+  $basededatos = "foranerp_udg"
 
 	// creación de la conexión a la base de datos con mysql_connect()
 	$conexion = mysqli_connect( $servidor, $usuario, "" ) or die ("No se ha podido conectar al servidor de Base de datos");
