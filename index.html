@@ -36,7 +36,10 @@
 						Member access
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div>
+					<form action="ingresar.php" method="POST" id="formulario">
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@ejemplo.com">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -53,10 +56,13 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" value="submit" name="entrar">
 							Login
 						</button>
 					</div>
+
+					</form>
+				</div>
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
