@@ -1,7 +1,7 @@
 <?php
 
  try{
-     $conn = new PDO('mysql:host=nombredelservidor;dbname=basededatos','usuario','password');
+     $conn = new PDO('mysql:host=localhost;dbname=foranerp_MAE','foranerp_user','m?L$GPQ5!r[Y');
      echo 'Conexion realizada';
     }
 catch (PDOException $ex) {
@@ -10,13 +10,13 @@ catch (PDOException $ex) {
     }
 
 /* @var $_POST type */
-$nombre= $_POST["txtusuario"];
-$pass= $_POST["txtusuario"];
+$nombre= $_POST["Email"];
+$pass= $_POST["Password"];
 
 
- $query=("SELECT UsuarioLog,PassLog FROM `Login` "
-         . "WHERE `UsuarioLog`='".mysql_real_escape_string($nombre)."' and "
-         . "`PassLog`='".mysql_real_escape_string($pass)."'");
+ $query=("SELECT username,pass FROM `Login` "
+         . "WHERE `username`='".mysql_real_escape_string($nombre)."' and "
+         . "`pass`='".mysql_real_escape_string($pass)."'");
 
 $rs= mysql_query($query);
 $row=mysql_fetch_object($rs);
