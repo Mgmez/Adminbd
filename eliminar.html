@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Agregar</title>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+
+</head>
+<body>
+    
+    
+  <div class="container section center">
+    <h1>Nuevo Evento</h1>
+
+    <div class="row">
+
+
+      <div class="col l12 center" >
+
+        <div class="card black">
+
+          <div class="card-content white-text center">
+            <span class="card-title">Ingresa los siguientes datos</span>
+     
+          </div>
+
+           <div class="row">
+    <form class="col l12">
+      <div class="row">
+        <div class="input-field col l12">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name">Nombre del evento</label>
+        </div>
+        <div class="input-field col l12">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Auditorio</label>
+        </div>
+        <div class="input-field col l12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Equipo</label>
+        </div>
+        <div class="input-field col l12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Fecha</label>
+        </div>
+      <div>
+        <a class="btn-floating btn-large waves-effect waves-light black"><i class="material-icons">check</i></a>
+      </div>
+          </div>
+    </form>
+  </div>
+            
+     
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js">
+  </script>
+
+  <script>
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      M.AutoInit();
+    });
+    
+  </script>
+
+
+</body>
+
+</html>

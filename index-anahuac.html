@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hospedaje | An&aacute;huac</title>
+
+    <!-- core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="css/index.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+</head><!--/head-->
+<body class="homepage">
+    <header id="Header"></header>
+    <div id="model-id" class="modal fade " tabindex="1" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <div id="spinner">
+                        <p style="font-size: 12px; color: black; font-weight: bold">
+                            <img id="img-spinner" src="../Pruebas/images/loader.gif" alt="Loading" />
+                            <span id="spinnerMsg">Procesando...</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bienvenida">
+
+    </div>
+    <div class="content-wrapper" id="principal">
+    </div>
+
+
+    <div class="modal fade" id="ExistentePropiedadModal" role="dialog">
+        <div id="MyModal" class="modal-dialog" method="post">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title">Editar propiedad</h3>
+                </div>
+                <div id="ErrorDivModalEditPropi">
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-default">
+
+                                <div class="box-body border-modal">
+
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
+                                            <div class="form-group">
+                                                <label>Tipo de propiedad*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-home"></i>
+                                                    </span>
+                                                    <select id="upPropTipo" name="upPropTipo" class="form-control mandatory">
+                                                        <option value="Casa">Casa</option>
+                                                        <option value="Casa hab individual">Casa con habitación individual</option>
+                                                        <option value="Casa hab compartida">Casa con habitación compartida</option>
+                                                        <option value="Dpto hab individual">Dpto con habitación individual</option>
+                                                        <option value="Dpto hab. compartida">Dpto con habitación compartida</option>
+                                                        <option value="Departamento">Departamento</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="form-group">
+                                                <label>Costo de la renta (por mes)*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-home"></i>
+                                                    </span>
+                                                    <input type="number" class="form-control mandatory" id="upPropCosto" name="upPropCosto" placeholder="costo" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="form-group">
+                                                <label>Admitimos*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-home"></i>
+                                                    </span>
+                                                    <select id="upPropGenero" name="upPropGenero" class="form-control mandatory" required="">
+                                                        <option selected="" value="selected">Selecciona</option>
+                                                        <option value="Mujeres">Mujeres</option>
+                                                        <option value="Hombres">Hombres</option>
+                                                        <option value="Ambos">Ambos</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br /><br /><hr />
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <br />
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Limpieza" />Limpieza
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Amueblado" />Amueblado
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Internet" />Internet
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Cocina" />Cocina
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Baño_propio" />Baño_propio
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Estacionamiento" />Estacionamiento
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Tv_cable" />Tv_cable
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Gas" />Gas
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Alimentos" />Alimentos
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Luz" />Luz
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Teléfono" />Teléfono
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Entrada_independiente" />Entrada_independiente
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="upPropCaract checkServicios" type="checkbox" value="Lavado-Servicio" />Lavado-Servicio
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div><br /><br /><hr /><br />
+                                    <div class="col-md-12">
+                            <div class="form-group">
+                                <p class="text-center" style="font-size: 15px;">
+                                    <b>Fotos del inmueble que ofreces</b>
+                                </p>
+                                <br />
+                                <div class="col-xs-6">
+                                    <input type="file" class="form-control npfotos" id="foto1" name="foto1" accept="image/*" />
+                                    <input type="file" class="form-control npfotos" id="foto2" name="foto2" accept="image/*" />
+                                    <input type="file" class="form-control npfotos" id="foto3" name="foto3" accept="image/*" />
+                                    <input type="file" class="form-control npfotos " id="foto4" name="foto4" accept="image/*" />
+                                    <input type="file" class="form-control npfotos " id="foto5" name="foto5" accept="image/*" />
+                                </div>
+                                <div class="col-xs-3">
+                                    <button class="btn btn-round btn-info btnVerEditFoto" data-orden="1" id="btnVerEditFoto1">Ver foto 1</button><br>
+                                    <button class="btn btn-round btn-info btnVerEditFoto" data-orden="2" id="btnVerEditFoto2">Ver foto 2</button><br>
+                                    <button class="btn btn-round btn-info btnVerEditFoto" data-orden="3" id="btnVerEditFoto3">Ver foto 3</button><br>
+                                    <button class="btn btn-round btn-info btnVerEditFoto" data-orden="4" id="btnVerEditFoto4">Ver foto 4</button><br>
+                                    <button class="btn btn-round btn-info btnVerEditFoto" data-orden="5" id="btnVerEditFoto5">Ver foto 5</button><br>
+                                </div>
+                                <!--
+                                <div class="col-xs-3">
+                                    &nbsp;&nbsp;<button class="btn btn-round btn-danger btnEliminarEditFoto" disabled="disabled" data-orden="1" id="btnEliminarEditFoto1">Eliminar foto 1</button><br>
+                                   &nbsp;&nbsp;<button class="btn btn-round btn-danger btnEliminarEditFoto" disabled="disabled" data-orden="2" id="btnEliminarEditFoto2">Eliminar foto 2</button><br>
+                                    &nbsp;&nbsp;<button class="btn btn-round btn-danger btnEliminarEditFoto" disabled="disabled" data-orden="3" id="btnEliminarEditFoto3">Eliminar foto 3</button><br>
+                                    &nbsp;&nbsp;<button class="btn btn-round btn-danger btnEliminarEditFoto" data-orden="4" id="btnEliminarEditFoto4">Eliminar foto 4</button><br>
+                                    &nbsp;&nbsp;<button class="btn btn-round btn-danger btnEliminarEditFoto" data-orden="5" id="btnEliminarEditFoto5">Eliminar foto 5</button><br>
+                                </div>
+                            -->
+                            </div>
+                        </div><br /><br /><hr /><br />
+                                    <div class="col-md-12 text-center">
+                                        <div class="form-group">
+
+                                            <br />
+                                            <p class="text-center" style="font-size: 15px;">
+                                                <b>Comentarios adicionales</b>
+                                            </p>
+
+                                            <textarea class="mandatory" id="upcoment" rows="4" cols="50" name="npcoment" form="upcoment"></textarea>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" id="btnUpdInmu2">Guardar Todo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="NuevaHabitacionModal" role="dialog">
+        <div id="MyModal" class="modal-dialog" method="post">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title">Nueva habitación</h3>
+                </div>
+                <div id="ErrorDivModalEditPropi">
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-default">
+
+                                <div class="box-body border-modal">
+
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
+                                            <div class="form-group">
+                                                <label>Tipo de propiedad*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-home"></i>
+                                                    </span>
+                                                    <select id="RepPropTipo" name="upPropTipo" class="form-control mandatory">
+                                                        <option value="Casa">Casa</option>
+                                                        <option value="Casa hab individual">Casa con habitación individual</option>
+                                                        <option value="Casa hab compartida">Casa con habitación compartida</option>
+                                                        <option value="Dpto hab individual">Dpto con habitación individual</option>
+                                                        <option value="Dpto hab. compartida">Dpto con habitación compartida</option>
+                                                        <option value="Departamento">Departamento</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="form-group">
+                                                <label>Costo de la renta (por mes)*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-home"></i>
+                                                    </span>
+                                                    <input type="number" class="form-control mandatory" id="RepPropCosto" name="upPropCosto" placeholder="costo" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="form-group">
+                                                <label>Admitimos*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-home"></i>
+                                                    </span>
+                                                    <select id="RepPropGenero" name="RepPropGenero" class="form-control mandatory" required="">
+                                                        <option selected="" value="selected">Selecciona</option>
+                                                        <option value="Mujeres">Mujeres</option>
+                                                        <option value="Hombres">Hombres</option>
+                                                        <option value="Ambos">Ambos</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br /><br /><hr />
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <br />
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Limpieza" />Limpieza
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Amueblado" />Amueblado
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Internet" />Internet
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Cocina" />Cocina
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Baño_propio" />Baño_propio
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Estacionamiento" />Estacionamiento
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Tv_cable" />Tv_cable
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Gas" />Gas
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Alimentos" />Alimentos
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Luz" />Luz
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Teléfono" />Teléfono
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Entrada_independiente" />Entrada_independiente
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="checkbox-inline">
+                                                    <input class="RepPropCaract" type="checkbox" value="Lavado-Servicio" />Lavado-Servicio
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p class="text-center" style="font-size: 15px;">
+                                                <b>Fotos del inmueble que ofreces</b>
+                                            </p>
+                                            <br />
+                                             <div class="col-xs-6">
+                                                <input type="file" class="form-control npfotos" id="Repfoto1" name="foto1" accept="image/*" />
+                                                <input type="file" class="form-control npfotos" id="Repfoto2" name="foto2" accept="image/*" />
+                                                <input type="file" class="form-control npfotos" id="Repfoto3" name="foto3" accept="image/*" />
+                                                <input type="file" class="form-control npfotos " id="Repfoto4" name="foto4" accept="image/*" />
+                                                <input type="file" class="form-control npfotos " id="Repfoto5" name="foto5" accept="image/*" />
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <button class="btn btn-round btn-info btnVerRepFoto" data-orden="1" id="btnVerRepFoto1">Ver foto 1</button><br>
+                                                <button class="btn btn-round btn-info btnVerRepFoto" data-orden="2" id="btnVerRepFoto2">Ver foto 2</button><br>
+                                                <button class="btn btn-round btn-info btnVerRepFoto" data-orden="3" id="btnVerRepFoto3">Ver foto 3</button><br>
+                                                <button class="btn btn-round btn-info btnVerRepFoto" data-orden="4" id="btnVerRepFoto4">Ver foto 4</button><br>
+                                                <button class="btn btn-round btn-info btnVerRepFoto" data-orden="5" id="btnVerRepFoto5">Ver foto 5</button><br>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br /><br />
+                        <div class="row">
+                            <br /><br /><br /><br />
+                            <p class="text-center" style="font-size: 15px;">
+                                <b>Domicilio del inmueble</b>
+                            </p>
+                            <br />
+                            <div class="col-md-4 text-center">
+                                <div class="form-group">
+                                    <label>Calle</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="text" class="form-control mandatory" id="RepCalle" name="npCalle" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <div class="form-group">
+                                    <label>Número</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="text" class="form-control mandatory" id="Repnumext" name="npnumext" readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <div class="form-group">
+                                    <label>Interior</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="RepNumInt" name="npNumInt" readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="form-group">
+                                    <label>Colonia</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="text" class="form-control mandatory" id="RepCol" name="npCol" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="form-group">
+                                    <label>Municipio o Delegación</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="text" class="form-control mandatory" id="RepMunDel" name="npMunDel" readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="form-group">
+                                    <label>Estado</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="text" class="form-control mandatory" id="RepEstado" name="npEstado" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="form-group">
+                                    <label>Código Postal</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <input type="number" class="form-control mandatory" id="RepCp" name="npCp" maxlength="5" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                    <hr />
+                                    <div class="col-md-12 text-center">
+                                        <div class="form-group">
+
+                                            <br />
+                                            <p class="text-center" style="font-size: 15px;">
+                                                <b>Comentarios adicionales</b>
+                                            </p>
+
+                                            <textarea class="mandatory" id="Repcoment" rows="4" cols="50" name="npcoment" form="upcoment"></textarea>
+                                            <input type="hidden" id="hidlat" val="">
+                                            <input type="hidden" id="hidlong" val="">
+                                            <input type="hidden" id="hidcamp" val="">
+                                            <input type="hidden" id="hidpropiedad" val="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" id="quitarModalNuevaHab" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" id="btnGuardarNuevaHabitacion">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="modal fade" id="LoginModal" role="dialog">
+    <div id="MyModalLogin" class="modal-dialog" method="post">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="modaltxt">Iniciar Sesión</h3>
+            </div>
+            <div id="ErrorDivModalNuevaPropiedad">
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="box-default">
+                            <div class="box-body border-modal">
+                                <div class="login-logo">
+                                    <p style="text-align:center;">
+                                        <img src="images/logo.png" />
+                                        <br />
+                                        <b>Hospedaje Anáhuac</b>
+                                    </p>
+                                </div>
+
+                                <div class="col-md-offset-3 col-md-6 text-center">
+
+                                    <input type="text" class="form-control entrar" name="scorreo" id="scorreo" placeholder="e-mail" />
+                                    <br />
+                                    <input type="password" class="form-control entrar" name="spassword" id="spassword" placeholder="Contraseña" maxlength="8" />
+                                    <br />
+                                    <button type="button" id="sesion" class="btn alert-success">Iniciar sesión</button>
+                                    <br />
+                                    <a id="RecuperarLink" href="#">Recuperar Contraseña</a>
+                                    <br /><br /><br />
+                                    <button type="button" id="NuevaCuentaBoton" class="btn alert-info">Crear nueva cuenta</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade" id="CampusModal" role="dialog">
+        <div id="MyCampusLogin" class="modal-dialog" method="post">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="modaltxt">Seleccione Campus</h3>
+                </div>
+                <div id="ErrorDivModalCampus">
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="box-default">
+                                <div class="box-body border-modal">
+                                    <div class="login-logo">
+                                        <p style="text-align:center;">
+                                            <img src="images/logo.png" />
+                                            <br />
+                                            <b>Hospedaje Anáhuac</b>
+                                        </p>
+                                    </div>
+                                    <br />
+                                    <p style="text-align:center;">
+                                        <b>Seleccione el campus deseado: </b>
+                                    </p>
+                                    <br />
+                                    <div class="col-md-offset-3 col-md-6 text-center">
+                                        <button type="button" id="BtnNorte" class="btn alert-success">Anáhuac Norte</button>
+                                        <br /><br /><br />
+                                        <button type="button" id="BtnSur" class="btn alert-success">Anáhuac Sur</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="modal fade" id="conmodal" role="dialog">
+        <div id="MyModalcontact" class="modal-dialog" method="post">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="modaltxt">Dudas o sugerencias</h3>
+                </div>
+                <div id="ErrorDivModalcontact">
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="box-default">
+                                <div class="box-body border-modal">
+                                    <div class="login-logo">
+                                        <p style="text-align:center;">
+                                            <img src="images/logo.png" />
+                                            <br />
+                                            <b>Hospedaje Anáhuac</b>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-offset-3 col-md-6 text-center">
+                                    <p style="color:orange;font-size:20px;"><b>Campus Norte y Sur:</b></p>
+                                       <p></p>
+                                  <a href="mailto:hospedaje@anahuac.mx?Subject=Informes" target="_top">Enviar Mail a hospedaje@anahuac.mx</a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="RecuperarModal" role="dialog">
+        <div id="MyModalRecuperar" class="modal-dialog" method="post">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title">Recuperar contraseña</h3>
+                </div>
+                <div id="ErrorDivModalRecuperar">
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box-default">
+                                    <div class="box-body border-modal">
+                                        <div class="login-logo">
+                                            <p style="text-align:center;">
+                                                <img src="images/logo.png" />
+                                                <br />
+                                                <b>Hospedaje Anáhuac</b>
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-offset-3 col-md-6 text-center">
+
+                                            <input type="text" class="form-control" name="CorreoRecupera" id="CorreoRecupera" placeholder="Usuario" />
+                                            <br />
+                                            <button type="button" name="Recuperar" id="Recuperar" class="btn alert-success">Recuperar Contraseña</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="NuevousuarioModal" role="dialog">
+        <div id="MyModalNuevoUsuario" class="modal-dialog" method="post">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title"><b>NUEVO USUARIO</b></h2>
+                </div>
+                <div id="ErrorDivModalNuevoUsuario">
+
+                </div>
+                <div class="modal-body" id ="scrols">
+                    <div class="row">
+                        <div id="model-id2" class="modal fade " tabindex="1" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <div id="spinner">
+                        <p style="font-size: 12px; color: black; font-weight: bold">
+                            <img id="img-spinner" src="../Pruebas/images/loader.gif" alt="Loading" />
+                            <span id="spinnerMsg">Procesando...</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                        <div class="col-md-12">
+                            <div class="box-default">
+                                <div class="box-body border-modal">
+                                    <p align="center" class="hola"></p>
+
+                                    <div class="form-group">
+                                        <p style="text-align:center;font-size:14px;color:#ff5722;"> <span style="text-align:center;font-size:18px;color:#c52d2f;font-weight: 800" >PASO 1 </span><b>Datos Personales</b> </p>
+                                        <br>
+                                        <div class="col-md-12">
+                                            <div class="col-xs-4">
+
+                                                <p style="text-align:left;"><b>Nombre*</b></p>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="text" placeholder="" class="form-control mandatory" id="NNOMBRE" name="NNOMBRE" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;"><b>Apellido Paterno*</b></p>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="text" placeholder="" class="form-control mandatory" id="NAPATERNO" name="NAPATERNO" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;"><b>Apellido Materno*</b></p>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="text" placeholder="" class="form-control mandatory" id="NAMATERNO" name="NAMATERNO" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br /><br /><br /><br />
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;"><b>E-mail personal*</b></p>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="text" placeholder="" class="form-control mandatory" id="NMAIL" name="NMAIL" required="required" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;"><b>Password</b></p>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="password" placeholder="" class="form-control mandatory password" id="NPWD" name="NPWD" required="required" maxlength="8" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;"><b>Confirmar password</b></p>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="password" placeholder="" class="form-control mandatory password" id="NPWD2" name="NPWD2" required="required" maxlength="8" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br /><br /><br /><br />
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="col-xs-2">
+                                                <label>Lada particular*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="tel" title="3 dígitos para lada" class="form-control mandatory" id="NLADA" name="NLADA  " placeholder="Lada" maxlength="3" minlenght="3" required onkeypress="ValidaSoloNumeros(this)" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-3">
+                                                <label>Número particular</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="tel" class="form-control mandatory" id="NTEL" name="NTEL" maxlength="8" placeholder="Ingrese el número" required="required" onkeypress="ValidaSoloNumeros(this)" />
+                                                </div>
+                                            </div>
+
+                                            <!--<div class="col-xs-2">
+                                                <label>Lada celular*</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="text" class="form-control mandatory" id="NLADACEL" name="NLADACEL" placeholder="Lada" required="required" />
+                                                </div>
+                                            </div>-->
+                                            <div class="col-xs-4">
+                                                <label>Número celular</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-home"></i> </span>
+                                                    <input type="tel" class="form-control mandatory" id="NCEL" name="NCEL" maxlength="10" placeholder="Ingrese el número" required="required" onkeypress="ValidaSoloNumeros(this)" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label>Campus</label>
+                                                <select id="NCAMPUS" name="NCAMPUS" class="form-control mandatory" required="required">
+                                                    <option value="cero" selected="selected">Selecciona</option>
+                                                    <option value="CN">CAMPUS NORTE</option>
+                                                    <option value="CS">CAMPUS SUR</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br /><br /><br /><br /><br />
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p style="text-align:center;font-size:14px;color:#ff5722;"> <span style="text-align:center;font-size:18px;color:#c52d2f;font-weight: 800" >PASO 2 </span><b>Deberás subir un comprobante de domicilio, identificación oficial, solicitud de alta de hospedaje y reglamento firmado, y sólo se acepta en formato PDF con buena resolución.</b></p>
+                                            <br>
+                                            <div class="col-xs-4">
+
+                                                <p style="text-align:left;font-size:13px;"><b>Identificación oficial*<br /> (Por ambos lados)</b></p>
+                                                <input type="file" class="form-control mandatory" id="file1" name="file1" accept="application/pdf" />
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;font-size:13px;"><b>Comprobante de domicilio*<br />(Donde reside el ofertor)</b></p>
+                                                <input type="file" class="form-control mandatory" id="file2" name="file2" accept="application/pdf" />
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <p style="text-align:left;font-size:13px;"><b>Reglamento firmado*<br /><a style="background-color: #ffd01c!important;font-size: 16px;" href="archivos/reglamento.pdf" download="download"> (Descarga aquí)</a></b></p>
+                                                <input type="file" class="form-control mandatory" id="file3" name="file3" accept="application/pdf" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br /><br /><br /><br /><br /><br />
+                                    <div class="form-group">
+                                        <div align="left">
+                                            <div class="col-md-12">
+                                                     <p style="text-align:center;font-size:14px;color:#ff5722;"> <span style="text-align:center;font-size:18px;color:#c52d2f; font-weight: 800" >PASO 3 </span><b>Posteriormente debes subir una propiedad para que se pueda verificar la información. Después de todo lo anterior favor de mandar correo a <a href="mailto:hospedaje@anahuac.mx">hospedaje@anahuac.mx</a>.  con el asunto: Alta Hospedaje especificando el campus.</b></p>
+                                                <p style="text-align:left;">
+                                                    <b>
+                                                        <input class="mandatory" type="radio" name="acuerdo" id="acuerdo" />
+                                                        Los datos que proporciono son verídicos y acepto el aviso de privacidad
+                                                    </b> <a href="http://redanahuac.mx/mobile/aviso.html" target="_blank">_ver aviso_</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                        <div class="center">
+                                            <button class="btn btn-success" id="BtnNvoUser" name="btn-upload">   Enviar   </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer id="Footer" class="midnight-blue"></footer><!--/#footer-->
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <script>
+        function ValidaSoloNumeros(event) {
+            if ((event.keyCode < 48) || (event.keyCode > 57))
+                event.returnValue = false;
+
+        }
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--<script src="event.js"></script>-->
+    <!--<script src="js/jquery-3.1.1.min.js"></script>-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfLSuDd_C-zZDaDShjucMLCY-MRg1hAss&signed_in=true&libraries=places" async defer></script>
+
+    <script src="js/global.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/dataTables1.js"></script>
+
+
+</body>
+</html>
