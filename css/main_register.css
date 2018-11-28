@@ -8,6 +8,11 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+
 form {
   max-width: 300px;
   margin: 10px auto;
